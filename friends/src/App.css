@@ -16,7 +16,9 @@ body {
 	box-shadow: 0 15px 16px rgb(189, 189, 250);
 }
 
-.friends-container {
+.friends-card-container {
+	/* border: 1px solid red; */
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;

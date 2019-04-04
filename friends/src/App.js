@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { Route, Link } from 'react-router-dom';
+
 import './App.css';
 
 import Friends from './components/Friends';
+import FriendDetails from './components/FriendDetails';
 import AddForm from './components/AddForm';
+import UpdateForm from './components/UpdateForm';
 
 class App extends Component {
-	constructor(props) {
+	constructor() {
 		super();
 		this.state = {
-			friendsData : []
+			friendsData  : [],
+			activePerson : null
 		};
 	}
 
@@ -31,24 +36,73 @@ class App extends Component {
 			.post('http://localhost:5000/friends', newFriend)
 			.then((res) => {
 				this.setState({ friendsData: res.data });
-				// this.props.history.push('/put path here');
+				this.props.history.push('/'); // not working!....withRouter()
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
 
+	updateFriend = (person) => {
+		axios
+			.put(`http://localhost:5000/friends/${person.id}`, person)
+			.then((res) => {
+				this.setState({ friendsData: res.data });
+				this.props.history.push('/');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	deleteFriend = (id) => {
+		axios
+			.delete(`http://localhost:5000/friends/${id}`)
+			.then((res) => {
+				this.setState({ friendsData: res.data });
+				this.props.history.push('/');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	setActivePerson = (person) => {
+		this.setState({ activePerson: person });
+	};
+
 	render() {
 		return (
 			<div className="App">
-				<div className="header">
+				<Link to="/" className="header">
 					<h1>My Friends</h1>
-				</div>
+				</Link>
 
-				<div className="friends-container">
-					{this.state.friendsData.map((obj) => <Friends friend={obj} key={obj.id} />)}
-				</div>
-				<AddForm addFriend={this.addFriend} />
+				<Link to="/new-friend">Add a Friend</Link>
+
+				<Route exact path="/" render={() => <Friends friendsData={this.state.friendsData} />} />
+
+				<Route
+					exact
+					path="/person/:id"
+					render={(props) => (
+						<FriendDetails
+							{...props}
+							friendsData={this.state.friendsData}
+							setActivePerson={this.setActivePerson}
+							deleteFriend={this.deleteFriend}
+						/>
+					)}
+				/>
+
+				<Route exact path="/new-friend" render={(props) => <AddForm {...props} addFriend={this.addFriend} />} />
+
+				<Route
+					path="/update-friend"
+					render={() => (
+						<UpdateForm updateFriend={this.updateFriend} activePerson={this.state.activePerson} />
+					)}
+				/>
 			</div>
 		);
 	}
