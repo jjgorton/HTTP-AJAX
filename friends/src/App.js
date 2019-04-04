@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 
 import Friends from './components/Friends';
+import AddForm from './components/AddForm';
 
 class App extends Component {
 	constructor(props) {
@@ -25,15 +26,29 @@ class App extends Component {
 			});
 	}
 
+	addFriend = (newFriend) => {
+		axios
+			.post('http://localhost:5000/friends', newFriend)
+			.then((res) => {
+				this.setState({ friendsData: res.data });
+				// this.props.history.push('/put path here');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<div className="header">
 					<h1>My Friends</h1>
 				</div>
+
 				<div className="friends-container">
 					{this.state.friendsData.map((obj) => <Friends friend={obj} key={obj.id} />)}
 				</div>
+				<AddForm addFriend={this.addFriend} />
 			</div>
 		);
 	}
