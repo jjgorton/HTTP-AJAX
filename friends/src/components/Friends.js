@@ -7,11 +7,11 @@ const Friends = (props) => {
 		<div className="friends-card-container">
 			{props.friendsData.map((obj) => (
 				<Link to={`/person/${obj.id}`} className="friends-card">
-					<h2>Name: {obj.name}</h2>
+					<h2>{obj.name}</h2>
 					<p>Age: {obj.age}</p>
 					<p>Email: {obj.email}</p>
 				</Link>
-			))};
+			))}
 		</div>
 	);
 };

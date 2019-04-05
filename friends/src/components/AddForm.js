@@ -39,8 +39,8 @@ class AddForm extends React.Component {
 
 	render() {
 		return (
-			<div className="add-form">
-				<form onSubmit={this.handleSubmit}>
+			<div className="add-form-container">
+				<form onSubmit={this.handleSubmit} className="add-form">
 					<input
 						type="text"
 						name="name"

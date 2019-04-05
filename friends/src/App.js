@@ -74,12 +74,15 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Link to="/" className="header">
+				<header className="header">
+					<Link to="/new-friend">
+						<button className="btn">Add a Friend</button>
+					</Link>
 					<h1>My Friends</h1>
-				</Link>
-
-				<Link to="/new-friend">Add a Friend</Link>
-
+					<Link to="/">
+						<button className="btn">See the Group</button>
+					</Link>
+				</header>
 				<Route exact path="/" render={() => <Friends friendsData={this.state.friendsData} />} />
 
 				<Route

@@ -19,11 +19,17 @@ const FriendDetails = (props) => {
 
 	return (
 		<div className="friends-card details">
-			<h2>Name: {friend.name}</h2>
+			<h2>{friend.name}</h2>
 			<p>Age: {friend.age}</p>
 			<p>Email: {friend.email}</p>
-			<button onClick={updatePerson}>Update Info</button>
-			<button onClick={deletePerson}>Delete</button>
+			<div className="button-container">
+				<button onClick={updatePerson} className="btn">
+					Update Info
+				</button>
+				<button onClick={deletePerson} className="btn">
+					Delete
+				</button>
+			</div>
 		</div>
 	);
 };
