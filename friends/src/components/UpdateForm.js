@@ -5,17 +5,17 @@ class UpdateForm extends React.Component {
 		person : this.props.activePerson
 	};
 
-	changeHandler = (e) => {
-		e.persist();
-		let value = e.target.value;
-		if (e.target.name === 'age') {
+	changeHandler = (ev) => {
+		ev.persist();
+		let value = ev.target.value;
+		if (ev.target.name === 'age') {
 			value = parseInt(value, 10);
 		}
 
 		this.setState((prevState) => ({
-			friend : {
+			person : {
 				...prevState.person,
-				[e.target.name]: value
+				[ev.target.name]: value
 			}
 		}));
 	};
@@ -27,7 +27,7 @@ class UpdateForm extends React.Component {
 
 	render() {
 		return (
-			<div className="add-form">
+			<div className="update-form">
 				<form onSubmit={this.handleSubmit}>
 					<input
 						type="text"
