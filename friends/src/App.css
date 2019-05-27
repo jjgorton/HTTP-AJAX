@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline');
+
+html,
+body {
+	box-sizing: border-box;
+}
+
+h1,
+h2 {
+	font-family: 'Fascinate Inline', cursive;
+	font-size: 2rem;
+}
+
+h3,
+button,
+a,
+p {
+	text-decoration: none;
+	font-family: 'Raleway', sans-serif;
+	/* font-family: 'Fascinate Inline', cursive; */
+	color: rgba(42, 17, 56, 0.795);
+}
+
+.App {
+	display: flex;
+	flex-wrap: wrap;
+	background: rgb(215, 248, 215);
+}
+
+.header {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: baseline;
+	width: 100%;
+	text-align: center;
+	background: rgb(189, 189, 250);
+	box-shadow: 0 15px 16px rgb(189, 189, 250);
+}
+
+.friends-card-container {
+	/* border: 1px solid red; */
+
+	display: flex;
+	flex-wrap: wrap-reverse;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.friends-card {
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	margin: 50px;
+	background: rgba(238, 238, 238, 0.76);
+	box-shadow: 4px 4px 10px black;
+}
+
+.friends-card:hover {
+	background: rgba(214, 214, 214, 0.925);
+	box-shadow: 24px 24px 35px rgba(252, 255, 255, 0.664);
+}
+
+.add-form-container {
+	margin: auto;
+}
+
+.add-form,
+.details {
+	/* border: 1px solid red; */
+
+	border-radius: 50%;
+	width: 450px;
+	height: 450px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 50px auto;
+	background: rgba(238, 238, 238, 0.76);
+	box-shadow: 4px 4px 10px black;
+}
+
+.add-form input {
+	border-radius: 10px;
+	text-align: center;
+	margin: 5%;
+	height: 5%;
+	width: 50%;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-evenly;
+	width: 300px;
+	height: 100px;
+	/* border: 1px solid red; */
+}
+
+.btn {
+	border-radius: 180%;
+	width: 70px;
+	height: 70px;
+	transform: translate(0, 20px);
+	font-family: 'Raleway', sans-serif;
+}
+
+button {
+	border-radius: 180%;
+	width: 20%;
+	height: 20%;
+	transform: translate(0, 20px);
+}
